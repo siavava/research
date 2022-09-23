@@ -131,13 +131,13 @@
 
 
 % Header BOX
-\newcommand{\handout}[5]{
+\newcommand{\handout}[6]{
   \noindent
   \begin{center}
   \setlength{\fboxrule}{1.2pt}
   \framebox{
     \vbox{
-      \hbox to 5.78in { \textbf{MATH 75: Cryptography} \hfill {\bf #2} }
+      \hbox to 5.78in { \textbf{#6} \hfill {\bf #2} }
       \vspace{4mm}
       \hbox to 5.78in { {\Large \hfill {\textbf{ #5 }}  \hfill} }
       \vspace{2mm}
@@ -150,7 +150,7 @@
 }
 
 % Header BOX
-\newcommand{\PSET}[4]{\handout{#1}{#2}{Prof.\ #3}{Student: #4}{PSET #1}}
+\newcommand{\PSET}[5]{\handout{#1}{#2}{Prof.\ #3}{Student: #4}{PSET #1}{#5}}
 
 % Credit Statement
 \newcommand{\CreditStatement}[1]{
