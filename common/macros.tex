@@ -298,11 +298,6 @@
   % escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
 }
 
-
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
-
 \usepackage{booktabs}
 
 
@@ -383,3 +378,12 @@
 \usepackage{multirow}
 \usepackage{float}  % prevent table repositioning.
 \usepackage{lipsum}
+
+
+% SQL Symbols
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
