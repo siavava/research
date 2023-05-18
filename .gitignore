@@ -111,32 +111,23 @@ acs-*.bib
 *.glsdefs
 *.lzo
 *.lzs
-<<<<<<< HEAD
+=======
+=======
 *.slg
 *.slo
 *.sls
-=======
->>>>>>> 250706c (Initial commit)
 
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
 # *.ist
-
-<<<<<<< HEAD
 # gnuplot
 *.gnuplot
 *.table
-
-=======
->>>>>>> 250706c (Initial commit)
 # gnuplottex
 *-gnuplottex-*
 
 # gregoriotex
 *.gaux
-<<<<<<< HEAD
 *.glog
-=======
->>>>>>> 250706c (Initial commit)
 *.gtex
 
 # htlatex
@@ -152,13 +143,11 @@ acs-*.bib
 
 # knitr
 *-concordance.tex
-<<<<<<< HEAD
-# TODO Uncomment the next line if you use knitr and want to ignore its generated tikz files
-# *.tikz
-=======
 # TODO Comment the next line if you want to keep your tikz graphics files
 *.tikz
->>>>>>> 250706c (Initial commit)
+
+# TODO Uncomment the next line if you use knitr and want to ignore its generated tikz files
+# *.tikz
 *-tikzDictionary
 
 # listings
@@ -188,12 +177,12 @@ _minted*
 # morewrites
 *.mw
 
-<<<<<<< HEAD
 # newpax
 *.newpax
 
-=======
->>>>>>> 250706c (Initial commit)
+# newpax
+*.newpax
+
 # nomencl
 *.nlg
 *.nlo
@@ -213,12 +202,13 @@ _minted*
 # scrwfile
 *.wrt
 
-<<<<<<< HEAD
 # svg
 svg-inkscape/
 
-=======
->>>>>>> 250706c (Initial commit)
+# svg
+svg-inkscape/
+
+
 # sympy
 *.sout
 *.sympy
@@ -243,12 +233,9 @@ pythontex-files-*/
 *.md5
 *.auxlock
 
-<<<<<<< HEAD
 # titletoc
 *.ptc
 
-=======
->>>>>>> 250706c (Initial commit)
 # todonotes
 *.tdo
 
