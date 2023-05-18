@@ -5,7 +5,7 @@
 
 clean:
 	# delete compiled pdfs
-	@find . -name *.pdf -exec rm -f {} +
+	# @find . -name *.pdf -exec rm -f {} +
 
 	# delete latexmk files
 	@find . -name *.fls -exec rm -f {} +
@@ -43,5 +43,11 @@ clean:
 	@find . -name *.gz -exec rm -f {} +
 	@find . -name *.dvi -exec rm -f {} +
 	@find . -name *.ps -exec rm -f {} +
+
+	# delete generated aux bib files
+	@find . -name *-blx.bib -exec rm -f {} +
+
+	# delete generated run.xml files
+	@find . -name *.run.xml -exec rm -f {} +
 
 .PHONY: clean
