@@ -1,0 +1,89 @@
+\def \ransac { \textsc{RANSAC} }
+\def \cnn { \textsc{CNN} }
+\section{Existing Methods}
+The most common approaches to waterline detection are:
+\subsection{ Use of Hough transforms with \ransac}
+This is an edge-based method for waterline detection.
+A raw test image is resized and fed through a \cnn, producing a a segmentation mask
+that follows the contour of the boundaries between the water and any obstacles
+and the sky.
+
+\begin{figure}[H]
+  \includegraphics*[width=0.8\textwidth,height=50mm]{one-prelim.png}
+  \caption{
+    Semantic segmentation example~\cite{zhan-2020}.
+  }
+\end{figure}
+
+To effectively extract the waterline, post-processing is done as follows:
+\begin{enumroman}
+  \item First, a median filter is applied to the segmentation mask,
+    reducing narrow protrusions such as sailboat masts.
+  \item Binary edge detection is then applied to isolate the pixels on the boundary
+    between the water and the sky.
+  \item A probabilistic Hough transform is applied to the edge-detected image,
+    producing a set of possible lines and further cutting out shorter lines.
+    Only the pixels composing a long edge are retained.
+  \item Finally, linear regression is performed using \ransac to reduce the
+    influence of sharp edges on the contour.
+\end{enumroman}
+
+\begin{figure}[htb]
+  \includegraphics*[width=0.8\textwidth]{one.png}
+  \caption{
+    Hough transform + \ransac method for waterline detection
+    \cite{steccanella-2019,zhan-2017}.
+  }
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics*[width=0.7\textwidth]{one-results.png}
+  \caption{
+    Experimental results presented by authors
+    \cite{steccanella-2019}.
+  }
+\end{figure}
+
+\step
+\subsubsection{Disadvantages}
+As with any edge-based method, two key challenges must be overcome\cite{zhan-2017}.
+\begin{enumroman}
+  \item Minimization of false negatives (noise).
+  \item Efficient and robust identification of the waterline from the  noise.
+\end{enumroman}
+
+\subsection{Regional-based Approaches}
+Regional-based waterline detection algorithms seek to exploit regional features
+such as color and texture to more effectively isolate the waterline.
+One of the most common approaches works as follows:
+\begin{enumroman}
+  \item First, detect the sky region using some of its properties
+    with the assumption being that the waterline separates the sky
+    from the water. Features used to detect the sky can include
+    position, color, texture, and row gradient.
+  \item Pick out the pixels that are likely to be waterline pixels
+    by using the sky region as a reference.
+    This can be done by using the sky region as a mask and
+    applying a threshold to the color or texture of the pixels
+    in the sky region.
+  \item Finally, use \ransac to fit a line to the pixels
+\end{enumroman}
+
+\subsubsection{Disadvantages}
+In some cases, the sky region does not border the water in some
+parts of the image. In those cases this method does not work well.
+To counter this, Zarifar et al.~\cite{zarifar-2008} propose
+a method that combines the regional-based approach with
+an edge-based approach, and picks the waterline based on
+the results of both methods.
+
+\begin{figure}[H]
+  \includegraphics*[width=\textwidth]{two.png}
+  \caption{
+    Examples of individual and combined results using
+    region-based and edge-based methods~\cite{zarifar-2008}.
+  }
+\end{figure}
+
+While the combined method works better, it also results in computational
+redundancies, since multiple, different methods have to be run on the same image.
